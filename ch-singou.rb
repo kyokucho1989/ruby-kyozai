@@ -24,7 +24,9 @@ class Robo
   def switch_light(traffic_light)
     # @color = @color == '赤 ' ? '青' : '赤' 
     # puts "色変更"
+
     color = traffic_light.color
+    puts "信号機の色は #{color} です"
     # p traffic_light.color
     if color == '赤'
       traffic_light.color = '青'
@@ -36,6 +38,6 @@ end
 
 light1 = TrafficLight.new
 
-robo1 = Robo.new('C-3PO')
-robo1.switch_light(light1)
+c3po = Robo.new('C-3PO')
+c3po.switch_light(light1)
 p light1.color
