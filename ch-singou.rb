@@ -24,9 +24,7 @@ class Robo
   def switch_light(traffic_light)
     # @color = @color == '赤 ' ? '青' : '赤' 
     # puts "色変更"
-
     color = traffic_light.color
-    puts "信号機の色は #{color} です"
     # p traffic_light.color
     if color == '赤'
       traffic_light.color = '青'
@@ -34,10 +32,21 @@ class Robo
       traffic_light.color = '赤'
     end
   end
+
+  def check_cross(traffic_light)
+    color = traffic_light.color
+    if color == '青'
+      puts '通行できる！'
+    else
+      puts '通行できない！'
+    end
+  end
 end
 
 light1 = TrafficLight.new
 
 c3po = Robo.new('C-3PO')
+p light1.color
 c3po.switch_light(light1)
 p light1.color
+c3po.check_cross(light1)
