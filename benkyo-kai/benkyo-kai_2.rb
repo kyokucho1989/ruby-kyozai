@@ -1,4 +1,4 @@
-# require 'pry'
+require 'pry'
 puts <<-text
 　ヘンテコ村へようこそ！用件はなんでしょう？
 [1]:村長の家はどこ？
@@ -6,8 +6,8 @@ puts <<-text
 [3]:興味ないね
 text
  
-select_num = gets.chomp
-# select_num = gets.chomp.to_i
+# select_num = gets.chomp
+select_num = gets.chomp.to_i
 # binding.pry
 if select_num == 1 
   puts 'この角を曲がったところにありますよ。'
