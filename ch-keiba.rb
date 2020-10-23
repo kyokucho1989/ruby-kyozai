@@ -8,19 +8,23 @@ class Horse
   end
 end
 
+class User
+  attr_reader :name
+  attr_accessor :money
+  MONEY = 1000
+  def initialize(name)
+    @name = name
+    @money = MONEY
+  end
+end
+
 uma1 = Horse.new('タケウマライダー')
 uma2 = Horse.new('ムササビモモンガ')
 uma3 = Horse.new('ジャイロスコープ')
 
 race_horse_list = [uma1,uma2,uma3]
-# binding.pry
-# p race_horse_list
-
-# race_horse_list.each do |horse|
-#   puts " #{horse.name} #{horse.odds}"
-
-# end
-
+bi
+# オッズの表示
 race_horse_list.each_with_index do |horse,i|
   puts "No.#{i} #{horse.name} #{horse.odds}"
 
