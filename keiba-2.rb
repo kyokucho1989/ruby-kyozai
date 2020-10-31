@@ -16,8 +16,31 @@ class User
     @money = MONEY
   end
 end
-user1 = User.new('太郎')
 
+def select_horse(race_horse_list)
+  loop do
+    puts "どの馬に掛けますか？ No."
+    selected_horse_num = gets.chomp.to_i
+    if selected_horse_num <= race_horse_list.length - 1
+      break selected_horse_num
+    end
+    puts "オッズに表示されているNo.を入力してください"
+  end
+end
+
+def bet_money(user)
+  loop do
+    puts "いくら掛けますか？"
+    bet_money = gets.chomp.to_i
+    if bet_money <= user.money
+      user.money -= bet_money
+      break bet_money
+    end
+    puts "所持金以上の値を入力しないでください"
+  end
+end
+
+user1 = User.new('太郎')
 
 uma1 = Horse.new('タケウマライダー')
 uma2 = Horse.new('ムササビモモンガ')
@@ -46,31 +69,33 @@ while true
   end
 
   # 賭ける馬と賭け金の選択
-  while true
-    puts "どの馬に掛けますか？ No."
-    selected_horse_num = gets.chomp.to_i
-    if selected_horse_num <= race_horse_list.length - 1
-      break
-    end
-    puts "オッズに表示されているNo.を入力してください"
-  end
+  selected_horse_num = select_horse(race_horse_list)
+  # loop do
+  #   puts "どの馬に掛けますか？ No."
+  #   selected_horse_num = gets.chomp.to_i
+  #   if selected_horse_num <= race_horse_list.length - 1
+  #     break
+  #   end
+  #   puts "オッズに表示されているNo.を入力してください"
+  # end
 
-  while true
-    puts "いくら掛けますか？"
-    bet_money = gets.chomp.to_i
-    if bet_money <= user1.money
-      user1.money -= bet_money
-      break
-    end
-    puts "所持金以上の値を入力しないでください"
-  end
+  bet_money = bet_money(user1)
+  # loop do
+  #   puts "いくら掛けますか？"
+  #   bet_money = gets.chomp.to_i
+  #   if bet_money <= user1.money
+  #     user1.money -= bet_money
+  #     break bet_money
+  #   end
+  #   puts "所持金以上の値を入力しないでください"
+  # end
 
   # レーススタート
 
   puts "レーススタート... push enter"
   gets
-  # win_num = rand(race_horse_list.length)
-  win_num =selected_horse_num
+  win_num = rand(race_horse_list.length)
+  # win_num =selected_horse_num
   win_horse = race_horse_list[win_num]
   puts "勝ったのは #{win_horse.name}!!!"
 
